@@ -9,6 +9,7 @@
       <v-range-slider
         v-model="range"
         :max="max"
+        @change="rangeByCost(range)"
         :min="min"
         hide-details
         color="deep-purple lighten-2"
@@ -41,7 +42,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "TheFilter",
@@ -49,13 +50,11 @@ export default {
     sortByCostValue: false,
     sortByNameValue: false,
     min: 0,
-    max: 5000,
+    max: 1500,
+    range: [0, 1500],
   }),
-  computed: {
-    ...mapGetters(["range"]),
-  },
   methods: {
-    ...mapActions(["sortByName", "sortByCost"]),
+    ...mapActions(["sortByName", "sortByCost", "rangeByCost"]),
     sortByNameFunc() {
       if (this.sortByNameValue) {
         this.sortByCostValue = false;

@@ -8,13 +8,14 @@ import Vuetify from "@/plugins/vuetify";
 
 Vue.use(Vuex);
 
-if (localStorage.getItem("token")) {
+if (localStorage.getItem("theme")) {
   let themeLocal = JSON.parse(localStorage.getItem("theme"));
   Vuetify.framework.theme.dark = themeLocal.theme;
 }
 
 export default new Vuex.Store({
   state: {
+    itemsFiltered: [],
     range: [100, 1000],
     theme: false,
     items: [

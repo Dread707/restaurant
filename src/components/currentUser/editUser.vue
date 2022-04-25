@@ -185,7 +185,7 @@ export default {
       this.$refs.file.click();
     },
     handleFileUpload() {
-      this.newStudent.avatarUrl = this.$refs.file.files[0];
+      this.currentUser.avatarUrl = this.$refs.file.files[0];
       let reader = new FileReader();
       reader.addEventListener(
         "load",
@@ -195,9 +195,9 @@ export default {
         }.bind(this),
         false
       );
-      if (this.newStudent.avatarUrl) {
-        if (/\.(jpe?g|png|gif)$/i.test(this.newStudent.avatarUrl.name)) {
-          reader.readAsDataURL(this.newStudent.avatarUrl);
+      if (this.currentUser.avatarUrl) {
+        if (/\.(jpe?g|png|gif)$/i.test(this.currentUser.avatarUrl.name)) {
+          reader.readAsDataURL(this.currentUser.avatarUrl);
         }
       }
     },

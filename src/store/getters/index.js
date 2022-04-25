@@ -1,4 +1,5 @@
 export default {
+  itemsFiltered: ({ itemsFiltered }) => itemsFiltered,
   range: ({ range }) => range,
   theme: ({ theme }) => theme,
   cart: ({ cart }) => cart,

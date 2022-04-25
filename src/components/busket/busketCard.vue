@@ -1,5 +1,5 @@
 <template>
-  <v-card max-width="800" class="mx-auto">
+  <v-card max-width="600" class="mx-auto">
     <div class="d-flex justify-space-between">
       <h3 class="ml-3 py-3">Корзина:</h3>
       <div class="d-flex justify-end py-3 pr-3">
@@ -28,7 +28,7 @@
         <v-list-item-content>
           <strong v-html="item.text"></strong>
 
-          <v-list-item-subtitle v-text="item.text"></v-list-item-subtitle>
+          <v-list-item-subtitle v-text="item.info"></v-list-item-subtitle>
           <v-select
             class="number-input mt-3"
             :items="selectCount"

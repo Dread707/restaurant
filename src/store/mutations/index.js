@@ -1,6 +1,24 @@
-import { calculateAmount, calculateTotal, copyFunc } from "@/function";
+import {
+  calculateAmount,
+  calculateTotal,
+  copyFunc,
+  sortByKey,
+} from "@/function";
+import Vuetify from "@/plugins/vuetify";
 
 export default {
+  SORT_BY_NAME(state) {
+    state.items = [...state.items].sort((a, b) => a.text.localeCompare(b.text));
+  },
+  SORT_BY_COST(state) {
+    state.items = sortByKey(state.items, "cost");
+  },
+  EDIT_THEME(state) {
+    Vuetify.framework.theme.dark = state.theme = !state.theme;
+  },
+  EDIT_CURRENT_USER(state, index) {
+    state.currentUser[index] = !state.currentUser[index];
+  },
   ADD_ITEM: (state, item) => {
     state.TotalPositions++;
     if (item.id in state.cart) {

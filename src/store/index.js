@@ -4,11 +4,19 @@ import getters from "./getters";
 import actions from "./actions";
 import mutations from "./mutations";
 import createPersistedState from "vuex-persistedstate";
+import Vuetify from "@/plugins/vuetify";
 
 Vue.use(Vuex);
 
+if (localStorage.getItem("token")) {
+  let themeLocal = JSON.parse(localStorage.getItem("theme"));
+  Vuetify.framework.theme.dark = themeLocal.theme;
+}
+
 export default new Vuex.Store({
   state: {
+    range: [100, 1000],
+    theme: false,
     items: [
       {
         id: 1,
@@ -95,6 +103,17 @@ export default new Vuex.Store({
         img: "https://www.vremena-goda.ru/upload/resize_cache/iblock/a10/600_400_2d7a58ff99b324185ccb5ad5dfbdb5e85/sorbet.jpg?2021072301",
       },
     ],
+    currentUser: {
+      birthdayDate: "1986-03-17T22:29:11.063Z",
+      phoneNumber: "+7(982)658-91-16",
+      email: "Ivanov658@yahoo.com",
+      avatarUrl: "https://avatars0.githubusercontent.com/u/9064066?v=4&s=460",
+      name: "Иван Иванов",
+      commmentInfo:
+        "Для человека, если на то пошло, память — это все. Память- это индивидуальность. Память-это ты.\n" +
+        "\n" +
+        "Стивен Кинг",
+    },
     cart: {},
     delItem: {},
     TotalPositions: 0,
@@ -107,6 +126,14 @@ export default new Vuex.Store({
     createPersistedState({
       key: "cart",
       paths: ["cart", "TotalPositions", "Total"],
+    }),
+    createPersistedState({
+      key: "currentUser",
+      paths: ["currentUser"],
+    }),
+    createPersistedState({
+      key: "theme",
+      paths: ["theme"],
     }),
   ],
 });
